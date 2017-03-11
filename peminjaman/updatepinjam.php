@@ -1,6 +1,6 @@
 <?php
 //koneksi ke database
-$konek = mysqli_connect("localhost", "root", "", "web");
+include "../koneksi/konek.php";
 //ambil variabel yang dikirim dari form
 $a = $_GET['id_pinjam'];
 

@@ -1,7 +1,7 @@
 <?php 
 $nomor = $_GET['nomor'];
 
-$konek = mysqli_connect("localhost", "root", "", "web");
+include "../koneksi/konek.php";
 
 $carifoto = "SELECT foto FROM siswa WHERE nomor ='$nomor'";
 
@@ -19,7 +19,7 @@ unlink("gambar/$foto[foto]");
 $hasil = mysqli_query($konek,$hapus);
 
 if ('$hasil') {
-	header("location:index.php");
+	header("location:indexsiswa.php");
 }else{
 	echo "hapus gagal";
 }

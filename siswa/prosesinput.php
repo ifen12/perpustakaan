@@ -1,8 +1,9 @@
 <?php
 	//koneksi ke database
-	$konek = mysqli_connect("localhost", "root", "", "web");
+	include "../koneksi/konek.php";
 
 	//ambil data dari form
+	$nis =$_POST['nisn'];
 	$n = $_POST['nama'];
 	$lokasifile = $_FILES['upfile']['tmp_name'];
 	$namafile = $_FILES['upfile']['name'];
@@ -14,14 +15,16 @@
 
 	$upload = move_uploaded_file($lokasifile, $tujuan);
 
-	$input = "INSERT INTO siswa(nama, foto, kontak, alamat) VALUES ('$n','$namafile','$k','$a')";
+	$input = "INSERT INTO siswa(nisn,nama, foto, kontak, alamat) VALUES ('$nis','$n','$namafile','$k','$a')";
 
 	$hasil = mysqli_query($konek,$input);
 
 	//apabila query untuk input data benar
 	if($hasil OR $upload){
-		header("location:index.php");
+		header("location:indexsiswa.php");
+		//echo "benar";
 	}else{
 		header("location:inputsiswa.php");
+		//echo "gagal";
 	}
 ?>

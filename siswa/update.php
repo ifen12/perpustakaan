@@ -1,9 +1,10 @@
 <?php
 //koneksi ke database
-$konek = mysqli_connect("localhost", "root", "", "web");
+include "../koneksi/konek.php";
 //ambil variabel yang dikirim dari form
 $nomor = $_POST['nomor'];
 
+$nis = $_POST['nisn'];
 $nama = $_POST['nama'];
 $kontak = $_POST['kontak'];
 $alamat = $_POST['alamat'];
@@ -24,11 +25,11 @@ if ($namaf != NULL) {
 	$foto = $fotolama;
 }
 
-$update = "UPDATE siswa SET nama = '$nama', kontak = '$kontak', alamat ='$alamat', foto = '$foto' WHERE nomor ='$nomor'";
+$update = "UPDATE siswa SET nisn ='$nis', nama = '$nama', kontak = '$kontak', alamat ='$alamat', foto = '$foto' WHERE nomor ='$nomor'";
 
 $hasil = mysqli_query($konek,$update);
 if($hasil){
-	header("location:index.php");
+	header("location:indexsiswa.php");
 }else{
 	echo "Update data tamu gagal";
 }

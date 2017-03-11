@@ -1,6 +1,6 @@
 <?php
 	//koneksi ke database
-	$konek = mysqli_connect("localhost", "root", "", "web");
+	include "../koneksi/konek.php";
 
 	//ambil data dari form
 	$p = $_GET['tgl_pinjam'];
